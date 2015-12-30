@@ -123,4 +123,32 @@ def stuff2(numbers):
     #~ print("< %s$" % data)
 
     
-stuff2(None)    
+#stuff2(None)    
+#import bingoc
+
+def brute_force():
+    #~ +----+----+----+----+----+
+    #~ |  6 |  3 | 14 |  4 |  5 |
+    #~ +----+----+----+----+----+
+    #~ |  0 | 31 | 29 | 18 | 22 |
+    #~ +----+----+----+----+----+
+    #~ |  1 | 30 | 16 |  9 | 24 |
+    #~ +----+----+----+----+----+
+    #~ | 10 | 11 |  7 |  8 | 12 |
+    #~ +----+----+----+----+----+
+    #~ | 28 | 15 |  2 | 23 | 13 |
+    #~ +----+----+----+----+----+
+    import bingoc
+    values = [6, 3, 14, 4, 5]
+    for seed in xrange(sys.maxint):
+        bingoc.srand(seed)
+        all_ok = True
+        for v in values:
+            if bingoc.rand() % 31 != v:
+                all_ok = False
+                break
+
+        if all_ok:
+            print(seed)
+            
+brute_force()
